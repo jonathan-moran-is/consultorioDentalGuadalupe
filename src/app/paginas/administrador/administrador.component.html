@@ -1,7 +1,7 @@
 <div role="main" class="main">
 
     <section class="page-header">
-        <div class="container">
+        <div class="container" style="padding-top: 105px;">
             <div class="row">
                 <div class="col">
                     <ul class="breadcrumb">
@@ -34,7 +34,7 @@
 
         <ul class="nav nav-pills">
             <li class="nav-item" data-option-value=""><a class="nav-link active" href="" (click)=" enableResumen = true; enableProductos = false; enablePedidos = false; enableMensajes = false; enableEditar = false; ">Contenido</a></li>
-            <li class="nav-item" data-option-value=""><a class="nav-link" href="" (click)=" enableResumen = false; enableProductos = true; enablePedidos = false; enableMensajes = false; enableEditar = false; ">Productos</a></li>
+            <li class="nav-item" data-option-value=""><a class="nav-link" href="" (click)=" enableResumen = false; enableProductos = true; enablePedidos = false; enableMensajes = false; enableEditar = false; ">Servicios</a></li>
             <li class="nav-item" data-option-value=""><a class="nav-link" href="" (click)=" enableResumen = false; enableProductos = false; enablePedidos = false; enableMensajes = true; enableEditar = false; ">Mensajes</a></li>
         </ul>
 
@@ -133,6 +133,13 @@
                                     <div class="col-lg-4 col-sm-12">
                                         <input [(ngModel)]="nvaEdicion.horarioContacto[2]" type="text" id="horarioDomingo" placeholder="Domingo - Horario" class="form-control my-3">
                                     </div>
+                                    <div class="input-group col-lg-6 col-sm-12" style="padding: 25px;">
+                                        <div class="input-group-prepend">
+                                        <label class="input-group-text col-lg-12" for="imagenProducto">Imagenes en "Servicios Destacados"</label>
+                                        <input type="file" accept="image/*" name="imagenProducto" id="imagenProducto" multiple (change)="subirImagen($event)">
+                                        </div>
+                                        <br>
+                                    </div>
 
                                     <div class="col-lg-12">
                                         <button class="btn btn-3d btn-light mb-2" id="boton" (click)="guardarEdicion(); enableEdicionInicio = false; ">Guardar</button>
@@ -153,7 +160,7 @@
                             <div class="container-fluid">
                               <div class="row">
                                     <div class="col-lg-9 col-md-11 col-sm-9">
-                                      <h2 class="title text-white">Ingresar datos del producto</h2>
+                                      <h2 class="title text-white">Ingresar datos del servicio</h2>
                                     </div>
                                     <div class="col-lg-3 col-md-1 col-sm-3" (click)=" enableEdicionContacto = false; ">
                                         <div class="p-2 d-flex flex-row-reverse"><i class="fa fa-times fa-2x" aria-hidden="true"></i></div>
@@ -223,7 +230,7 @@
         <div class="mt-4 pt-2" *ngIf="enableProductos">
             <section class="productoNuevo" id="productoNuevo">
                 <div clas="col-lg-12 d-flex justify-content-center">
-                    <button style="margin-left: 30%; width: 40%;" type="button" class="btn btn-3d btn-lg btn-quaternary mb-2" (click)="habilitarNvoProducto()">Nuevo Producto</button>
+                    <button style="margin-left: 30%; width: 40%;" type="button" class="btn btn-3d btn-lg btn-quaternary mb-2" (click)="habilitarNvoProducto()">Nuevo Servicio</button>
                 </div>
                 <div class="row" *ngIf="enableNvoProducto">
                     <div class="col-lg-12 bg-secondary text-white" style="padding: 25px; border-radius: 5px;">                
@@ -231,7 +238,7 @@
                             <div class="container-fluid">
                               <div class="row">
                                     <div class="col-lg-9 col-md-11 col-sm-9">
-                                      <h2 class="title text-white">Ingresar datos del producto</h2>
+                                      <h2 class="title text-white">Ingresar datos del servicio</h2>
                                     </div>
                                     <div class="col-lg-3 col-md-1 col-sm-3" (click)=" enableNvoProducto = false; ">
                                         <div class="p-2 d-flex flex-row-reverse"><i class="fa fa-times fa-2x" aria-hidden="true"></i></div>
@@ -240,7 +247,7 @@
             
                                 <div class="col-lg-12 row">
                                     <div class="col-lg-6 col-sm-12">
-                                        <input [(ngModel)]="nvoProducto.nombreProducto" type="text" id="nombreProducto" placeholder="Nombre del Producto" class="form-control my-3">
+                                        <input [(ngModel)]="nvoProducto.nombreProducto" type="text" id="nombreProducto" placeholder="Nombre del Servicio" class="form-control my-3">
                                     </div>
                                     <div class="col-lg-6 col-sm-12">
                                         <input [(ngModel)]="nvoProducto.precioProducto" type="double" id="precioProducto" placeholder="Precio" class="form-control my-3">
@@ -249,16 +256,17 @@
                                         <textarea [(ngModel)]="nvoProducto.descripcionProducto" type="text" id="descripcionProducto" placeholder="Descripcion" class="form-control my-3"></textarea>
                                     </div>
                                     <div class="col-lg-6 col-sm-12">
-                                        <input [(ngModel)]="nvoProducto.cantidadVendidaProducto" type="number" id="cantidadVendidaProducto" placeholder="Cantidad de Vendidos" class="form-control my-3">
+                                        <input [(ngModel)]="nvoProducto.cantidadVendidaProducto" type="number" id="cantidadVendidaProducto" placeholder="Cantidad de pacientes" class="form-control my-3">
                                     </div>
                                     <div class="input-group col-lg-6 col-sm-12">
                                         <div class="input-group-prepend">
                                         <label class="input-group-text col-lg-5" for="categoriaProducto">Categoria</label>
                                         <select [(ngModel)]="nvoProducto.categoriaProducto" class="custom-select col-lg-7" id="categoriaProducto">
                                             <option selected>Elegir...</option>
-                                            <option value="Pastel">Pastel</option>
-                                            <option value="Postre">Postre</option>
-                                            <option value="Panaderia">Panaderia</option>
+                                            <option value="Tratamiento">Tratamiento</option>
+                                            <option value="Producto">Producto</option>
+                                            <option value="Limpieza">Limpieza</option>
+                                            <option value="Repuesto">Repuesto</option>
                                             <option value="Otros">Otros</option>
                                         </select>
                                         </div>
@@ -309,51 +317,75 @@
                             <div class="container-fluid">
                               <div class="row">
                                 <div class="col-lg-12">
-                                    <h1>Productos</h1>
+                                    <h1>Servicios</h1>
                                 </div>
         
                                 <div id="productosTabla" *ngFor="let producto of productos" style="border-bottom: 1px solid gray; padding: 25px">
-                                    <div class="row col-lg-12 tablacontenedor">
-                                        <div class="row col-lg-12 tablasP">
-                                        <div class="col-lg-8 col-md-7 col-sm-7"><h4> {{producto.nombreProducto}}</h4></div>
-                                        <div class="col-lg-4 col-md-5 col-sm-5">
-                                            <div class="float-right row">
-                                                <div class="p-2" (click)=" nvoProducto = producto; enableNvoProducto = true; "><i class="fa fa-pencil-square-o" aria-hidden="true"></i></div>
-                                                <div class="p-2" (click)="eliminarProducto(producto)"><i class="fa fa-trash" aria-hidden="true"></i></div>
+                                    
+                                    
+
+                                    
+                                    <div class="row">
+                                        <div class="row col-lg-12">
+                                            <div class="col-lg-8"></div>
+                                            <div class="col-lg-4">
+                                                <a class="btn btn-succes pt-2 pb-2 pr-3 pl-3" (click)=" nvoProducto = producto; enableNvoProducto = true; "><i class="fa fa-pencil-square-o" aria-hidden="true">  Editar</i></a>
+                                                <a class="btn btn-dangerpt-2 pb-2 pr-3 pl-3" (click)="eliminarProducto(producto)"><i class="fa fa-trash" aria-hidden="true"></i>Eliminar</a>
                                             </div>
                                         </div>
+                                        <div class="row col-lg-5">
+
+                                            <ngb-carousel>  
+                                                <ng-template ngbSlide>  
+                                                    <img [src]="producto.imagenes[0]" alt="Imagen1" width="100%" height="250px" >  
+                                                    <div class="carousel-caption">  
+                                                        <h3 style="color: rgba(34, 34, 34, 0.255)">Imagen 1</h3>  
+                                                    </div>  
+                                                </ng-template>  
+                                                <ng-template ngbSlide>  
+                                                    <img [src]="producto.imagenes[1]" alt="Imagen2" width="100%" height="250px" >  
+                                                    <div class="carousel-caption">  
+                                                        <h3 style="color: rgba(34, 34, 34, 0.255)">Imagen 2</h3>  
+                                                    </div>  
+                                                </ng-template>  
+                                                <ng-template ngbSlide>  
+                                                    <img [src]="producto.imagenes[2]" alt="Imagen3" width="100%" height="250px" >  
+                                                    <div class="carousel-caption">  
+                                                        <h3 style="color: rgba(34, 34, 34, 0.255)">Imagen 3</h3>  
+                                                    </div>  
+                                                </ng-template>
+                                            </ngb-carousel>
+
                                         </div>
-                                        <hr class="solid">
-                                        <div class=" row col-lg-12 tablasP">
-                                            <div class="col-lg-12"><h5>Precio: </h5><h6><strong>$ {{producto.precioProducto}}</strong></h6></div>
-                                        </div>
-                                        <div class="row col-lg-12 tablasP">
-                                            <div class="col-lg-6 tablaspacl"><strong>Categoria: </strong> <br>{{producto.categoriaProducto}}</div>
-                                            <div class="col-lg-6 tablaspacr"><strong>Descripcion:</strong> <br>{{producto.descripcionProducto}}</div>
-                                        </div>
-                                        <div class="row col-lg-12 tablasP">
-                                            <div class="col-lg-6 tablaspacl"><strong>Calificacion:</strong> <br>{{producto.calificacionProducto}}</div>
-                                            <div class="col-lg-6 tablaspacr"><strong>Cantidad Vendida:</strong> <br>{{producto.cantidadVendidaProducto}}</div>
-                                        </div>
-                                        <div class="row col-lg-12 tablasP">
-                                            <div class="col-lg-12">
-                                                <h5>Imagenes: </h5>
-                                                <div data-plugin-lightbox data-plugin-options="{'delegate': 'a', 'type': 'image', 'gallery': {'enabled': true}}">
-                                                    <div class="row">
-                                                        <div class="col-lg-4 col-md-4 col-sm-12">
-                                                                <img id="imagen0" class="img-fluid" width="200px" height="150px" [src]="producto.imagenes[0]" alt="Imagen Producto">
-                                                        </div>
-                                                        <div class="col-lg-4 col-md-4 col-sm-6">
-                                                                <img id="imagen1" class="img-fluid" width="200px" height="150px" [src]="producto.imagenes[1]" alt="Imagen Producto">
-                                                        </div>
-                                                        <div class="col-lg-4 col-md-4 col-sm-6">
-                                                                <img id="imagen2" class="img-fluid" width="200px" height="150px" [src]="producto.imagenes[2]" alt="Imagen Producto">
-                                                        </div>
-                                                    </div>
+
+                                        <div class="col-lg-7">
+
+                                            <div class="summary entry-summary">
+
+                                                <h1 class="mb-0"><strong>{{producto.nombreProducto}}</strong></h1>
+
+                                                <div class="review_num">
+                                                    <span class="count" itemprop="ratingCount">{{producto.cantidadVendidaProducto}}</span> vendidos
                                                 </div>
+
+                                                <div [title]='"Calificado "+producto.calificacionProducto+" de 100%"' class="star-rating">
+                                                    <span [style]='"width:"+producto.calificacionProducto'></span>
+                                                </div>
+
+                                                <p class="price">
+                                                    <span class="amount">${{producto.precioProducto}}</span>
+                                                </p>
+
+                                                <p class="mb-4">{{producto.descripcionProducto}}</p>
+                                                
+                                                <div class="product_meta">
+                                                    <span class="posted_in">Categoria: <a rel="tag">{{producto.categoriaProducto}}</a></span>
+                                                </div><br>
+                                                <hr><br>
                                             </div>
+
+
                                         </div>
-                                        <hr>
                                     </div><br>
                                 </div>
         
@@ -378,7 +410,7 @@
                         <div class="col-lg-8 col-md-7 col-sm-7"><h5> {{contacto.contactoMotivo}}</h5></div>
                         <div class="col-lg-4 col-md-5 col-sm-5">
                             <div class="float-right row" style="margin: 2.5px">
-                                <a [attr.href]="'https://wa.me/+521'+contacto.contactoTelefono+'?text=¡Gracias%20por%20comunicarse%20con%20nosotros!%0A¡Pronto%20recibir%20una%20respuesta!'" target="_blank" class="btn btn-success pt-2 pb-2 pr-3 pl-3"><i class="fa fa-whatsapp"></i></a>
+                                <a [attr.href]="'https://wa.me/+521'+contacto.contactoTelefono+'?text=¡Gracias%20por%20comunicarse%20con%20nosotros!%0A¡Pronto%20recibirá%20una%20respuesta!'" target="_blank" class="btn btn-success pt-2 pb-2 pr-3 pl-3"><i class="fa fa-whatsapp"></i></a>
                                 <div class="btn btn-danger pt-2 pb-2 pr-3 pl-3" (click)="eliminarContacto(contacto)"><i class="fa fa-trash" aria-hidden="true"></i></div>
                             </div>
                         </div>

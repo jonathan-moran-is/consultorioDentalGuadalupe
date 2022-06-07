@@ -1,18 +1,18 @@
 <div role="main" class="main shop">
 
     <section class="page-header">
-        <div class="container">
+        <div class="container" style="padding-top: 105px;">
             <div class="row">
                 <div class="col">
                     <ul class="breadcrumb">
                         <li><a href="#">Inicio</a></li>
-                        <li class="active">Productos</li>
+                        <li class="active">Servicios</li>
                     </ul>
                 </div>
             </div>
             <div class="row">
                 <div class="col">
-                    <h1>Productos</h1>
+                    <h1>Servicios</h1>
                 </div>
             </div>
         </div>
@@ -26,17 +26,20 @@
                         <div class="container-fluid">
                           <div class="row col-lg-12 col-md-12 col-sm-12 flex">
                             <div class="col-lg-12">
-                                <h1>Productos</h1>
+                                <h1>Servicios</h1>
                             </div>
     
                             <div class="row col-lg-12" style="padding-left: 10%;">
                                 <div class="col-lg-3 col-md-6 col-sm-12 tablaProductos row" *ngFor="let producto of productos" style="box-shadow: 2.5px 2.5px 15px grey; margin: 25px; padding: 10px;">
                                     <div class="card" style="width: 100%;">
-                                        <img [src]="producto.imagenes[0]" class="card-img-top" alt="Imagen del Producto">
+                                        <img [src]="producto.imagenes[0]" class="card-img-top" alt="Imagen del Producto" style="width: auto; height: 150px;">
                                         <div class="card-body">
                                           <h5 class="card-title" style="height: 30px;">{{producto.nombreProducto}}</h5>
                                           <hr>
-                                          <p class="card-text" style="height: 40px;">{{producto.descripcionProducto}}</p>
+                                          <div style="height: 50px; overflow: hidden; overflow-y: scroll;">
+                                            <p class="card-text" style="height: 40px;">{{producto.descripcionProducto}}</p>
+                                          </div>
+                                          <hr>
                                           <h5>${{producto.precioProducto}}</h5>
                                           <button class="btn btn-primary" (click)=" enableTablaProductos = false; enableProductoS = true; productoSeleccionado = producto; ">Ver detalles</button>
                                         </div>
@@ -108,20 +111,14 @@
                         </p>
 
                         <p class="mb-4">{{productoSeleccionado.descripcionProducto}}</p>
-
-                        <form enctype="multipart/form-data" method="post" class="cart">
-                            <div class="quantity">
-                                <input type="button" class="minus" value="-">
-                                <input type="text" class="input-text qty text" title="Qty" value="1" name="quantity" min="1" step="1">
-                                <input type="button" class="plus" value="+">
-                            </div>
-                            <a [attr.href]="'https://wa.me/+5216181063451?text=¡Buen%20día!%20Me%20interesa%20el%20producto:%20*'+productoSeleccionado.nombreProducto+'*.%20Quisiera%20consultar%20los%20detalles.'" target="_blank" class="btn btn-primary pt-2 pb-2 pr-3 pl-3">Solicitar producto <i class="fa fa-whatsapp"></i></a>
-                        </form>
-
+                        
                         <div class="product_meta">
                             <span class="posted_in">Categoria: <a rel="tag">{{productoSeleccionado.categoriaProducto}}</a></span>
+                        </div><br>
+                        <hr><br>
+                        <div>
+                            <a [attr.href]="'https://wa.me/+5216181234567?text=¡Buen%20día!%20Me%20interesa%20el%20servicio:%20*'+productoSeleccionado.nombreProducto+'*.%20Quisiera%20consultar%20los%20detalles.'" target="_blank" class="btn btn-primary pt-2 pb-2 pr-3 pl-3">Solicitar producto <i class="fa fa-whatsapp"></i></a>
                         </div>
-
                     </div>
 
 

@@ -16,7 +16,7 @@ const routes:Routes = [
 { path: 'contacto', component: ContactoComponent },
 { path: 'dashboard', component: TableroComponent },
 { path: 'administrador', component: AdministradorComponent },
-{ path: 'productos', component: ProductosComponent },
+{ path: 'servicios', component: ProductosComponent },
 { path: 'productoSeleccionado', component: ProductoSeleccionadoComponent },
 { path: '**', component: NoEncontradoComponent },
 ]

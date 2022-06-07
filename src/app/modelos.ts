@@ -30,5 +30,5 @@ export interface Edicion {
     parrafoContacto1: string;
     parrafos: any;
     tituloParrafo: any;
-    imagenes: any;
+    imagenesInicio: any;
 }
